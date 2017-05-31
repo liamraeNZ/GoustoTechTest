@@ -158,11 +158,11 @@
         "ALBTargetGroup": {
             "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
             "Properties": {
-                "HealthCheckPath": "/",
+                "HealthCheckPath": "/clojure-collector-1.1.0-standalone/i",
                 "HealthCheckIntervalSeconds": 15,
                 "HealthCheckTimeoutSeconds": 5,
                 "HealthyThresholdCount": 3,
-                "Port": 80,
+                "Port": 8080,
                 "Protocol": "HTTP",
                 "UnhealthyThresholdCount": 5,
                 "VpcId": { "Ref": "VpcId" },
@@ -260,17 +260,11 @@
                 "UserData" : { "Fn::Base64" : { "Fn::Join" : ["", [
                     "#!/bin/bash -xe\n",
                     "yum update -y aws-cfn-bootstrap\n",
-                    "pip install ansible",
-                    "yum install git",
-                    "yum-config-manager --enable epel -y", 
-                    "yum install ansible -y",
-                    "ansible-playbook /home/ec2-user/GuostoTechTest/ansible/server_config.yml -i ./",                    
-                    
-                    "/opt/aws/bin/cfn-signal -e $? ",
-                    "         --stack ", { "Ref" : "AWS::StackName" },
-                    "         --resource AutoScalingGroup ",
-                    "         --region ", { "Ref" : "AWS::Region" }, "\n"
-
+                    "yum install git -y\n ",
+                    "git clone https://github.com/liamraeNZ/GuostoTechTest.git /home/ec2-user/GuostoTechTest\n",
+                    "yum-config-manager --enable epel -y\n", 
+                    "yum install ansible -y\n",
+                    "ansible-playbook /home/ec2-user/GuostoTechTest/ansible/server_config.yml -i /home/ec2-user/GuostoTechTest/ansible/hosts\n"
                 ]]}}
             }           
         },
