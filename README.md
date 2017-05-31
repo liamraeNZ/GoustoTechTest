@@ -33,7 +33,7 @@ and restarts Tomcat, in order to deploy the site.
 
 
 ## Setup
-Create stack using tomcat8-ansible.template  
-Once the stack is deployed, it the userdata will trigger ansible run
-Once the ALB healthcheck is healthy, the URL should be accessible  
-http://<endpoint>:8080/clojure-collector-1.1.0-standalone/i
+Create stack using tomcat8-ansible.template in AWS Cloudformation    
+Once the stack is deployed, the userdata will trigger ansible run  
+Once the ALB healthcheck is healthy, the URL should be accessible    
+http://endpoint:8080/clojure-collector-1.1.0-standalone/i
