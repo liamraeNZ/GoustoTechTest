@@ -1,10 +1,17 @@
-GuostoTechTest
+GuostoTechTest - Platform Engineer
 
-Prepared by Liam Rae-McLauchlan 31/05/2015
+Prepared by Liam Rae-McLauchlan 31/05/2017
 
 **Cloudformation Template**
 
-Spins up an autoscaling group, with an ALB, SG, CloudWatch alarm and Launch Configuration Must have at least 2 subnets selected for high availability
+Spins up an autoscaling group, with an ALB, SG, CloudWatch alarm and Launch Configuration  
+for an EC2 instance, running standard Amazon Linux
+
+*Paramaters*
+Key Name - Key Pair
+Instance Type - default: m1.small
+Subnets - Must have at least 2 subnets selected for high availability
+AllowedIP - CIDR range allowed to connect on port 22 or port 8080
 
 **Cloudwatch Alarm**  
 
@@ -21,4 +28,5 @@ Apache
 Java JDK  
 Tomcat8  
 
-It then pulls down the WAR file into the Tomcat directory
+It then pulls down the WAR file into the Tomcat directory  
+and restarts Tomcat, in order to deploy the site.
