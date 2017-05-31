@@ -1,7 +1,7 @@
 ---
- - hosts: all
-   connection: local
-   tasks:
+- hosts: all
+  connection: local
+  tasks:
     - name: install the latest version of Apache
       yum:
         name: httpd
@@ -12,13 +12,13 @@
         name: java-1.6.0-openjdk
         state: present
 
-    - name: install tomcat8
-      yum:
-        name: tomcat8
-        state: present
-
     - name: download war file
       get_url:
         url: http://d2io1hx8u877l0.cloudfront.net/2-collectors/clojure-collector/clojure-collector-1.1.0-standalone.war
-        dest: /usr/share/tomcat8/webapps/webapp1.war
-        mode: 000500
+        dest: /usr/share/tomcat8/webapps/clojure-collector-1.1.0-standalone.war
+        mode: 0644
+
+    - name: install tomcat8
+      yum:
+        name: tomcat8-webapps
+        state: present
