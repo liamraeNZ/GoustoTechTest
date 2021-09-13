@@ -1,4 +1,4 @@
-# GuostoTechTest - Platform Engineer
+# GoustoTechTest - Platform Engineer
 
 Prepared by Liam Rae-McLauchlan 31/05/2017
 
